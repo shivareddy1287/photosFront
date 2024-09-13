@@ -23,6 +23,6 @@
   "exclude": [
     "node_modules",
     "dist"
-  ]
-  // "references": [{ "path": "./tsconfig.node.json" }]
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
