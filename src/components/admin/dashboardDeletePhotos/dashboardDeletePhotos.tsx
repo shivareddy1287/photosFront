@@ -88,7 +88,11 @@ const DeletePhotos = () => {
   const hadleDeleteSelectedImages = () => {
     console.log(selectedImageIds)
 
-    dispatch(deletePhotosAction(selectedImageIds))
+    if (selectedImageIds.length > 0) {
+      dispatch(deletePhotosAction(selectedImageIds))
+    } else {
+      alert("Please select images")
+    }
   }
 
   if (isDeleted) {

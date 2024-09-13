@@ -142,12 +142,15 @@ const photosSlices = createSlice({
       .addCase(uploadPhotosAction.pending, state => {
         state.loading = true
       })
+      .addCase(resetUploadPhotos, (state, action) => {
+        state.isUploaded = true
+      })
       .addCase(
         uploadPhotosAction.fulfilled,
         (state, action: PayloadAction<PhotosResponse>) => {
           state.photosUploaded = action.payload
           state.loading = false
-          state.isUploaded = true
+          state.isUploaded = false
           state.appErr = undefined
           state.serverErr = undefined
         },
@@ -157,6 +160,7 @@ const photosSlices = createSlice({
         state.appErr = action.payload?.message
         state.serverErr = action.error?.message
       })
+
       // Fetch Photos Cases
       .addCase(fetchPhotosAction.pending, state => {
         state.loading = true
