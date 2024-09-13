@@ -31,7 +31,7 @@ const UserNavbar = () => {
             <span onClick={() => navigate("/know-your-leader")}>
               {userDetails ? (
                 <>
-                  {userDetails?.firstName} {userDetails?.lastName}{" "}
+                  {userDetails?.lastName} {userDetails?.firstName}{" "}
                 </>
               ) : (
                 <>

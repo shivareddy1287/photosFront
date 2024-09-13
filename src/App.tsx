@@ -1,95 +1,7 @@
-// import "./App.css"
-// import { Counter } from "./features/counter/Counter"
-// import Gallery from "./features/gallery/gallery"
-// import { Quotes } from "./features/quotes/Quotes"
-// import logo from "./logo.svg"
-
-// import AuthPage from "./components/auth/auth"
-// import {
-//   BrowserRouter,
-//   Route,
-//   Routes,
-//   useNavigate,
-//   useNavigation,
-// } from "react-router-dom"
-
-// const App = () => {
-//   const navigate = useNavigate()
-//   return (
-//     <div className="App">
-//       <div>
-//         <ul>
-//           <li onClick={() => navigate("/login")}>login</li>
-//         </ul>
-//       </div>
-//       <BrowserRouter>
-//         <Routes>
-//           <Route element={<AuthPage />} path="/login" />
-//         </Routes>
-//       </BrowserRouter>
-//       {/* <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <Gallery />
-//         <AuthPage />
-//         <Counter />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <Quotes />
-//         <span>
-//           <span>Learn </span>
-//           <a
-//             className="App-link"
-//             href="https://reactjs.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             React
-//           </a>
-//           <span>, </span>
-//           <a
-//             className="App-link"
-//             href="https://redux.js.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Redux
-//           </a>
-//           <span>, </span>
-//           <a
-//             className="App-link"
-//             href="https://redux-toolkit.js.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Redux Toolkit
-//           </a>
-//           <span>, </span>
-//           <a
-//             className="App-link"
-//             href="https://react-redux.js.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             React Redux
-//           </a>
-//           ,<span> and </span>
-//           <a
-//             className="App-link"
-//             href="https://reselect.js.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Reselect
-//           </a>
-//         </span>
-//       </header> */}
-//     </div>
-//   )
-// }
-
-// export default App
 import "./App.css"
+
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 import AuthPage from "./components/auth/auth"
 
@@ -110,6 +22,7 @@ const App = () => {
   const navigate = useNavigate()
   return (
     <div className="App">
+      <ToastContainer />
       <div>
         <Navbar />
         {/* <ul>

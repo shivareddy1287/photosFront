@@ -5,6 +5,9 @@
   background: linear-gradient(to right, #cc202e, #cc202e);
   color: #ffff00;
 }
+.kyl-header-r-cont h3 {
+  text-transform: uppercase;
+}
 
 .kyl-header img {
   height: 120px;

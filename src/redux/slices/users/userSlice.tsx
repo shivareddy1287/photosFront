@@ -1,7 +1,8 @@
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
+// import axiosInstance from "axios"
 import baseUrl from "../../../utils/baseUrl"
 import type { PayloadAction } from "@reduxjs/toolkit"
+import axiosInstance from "../../../utils/axiosInstance"
 
 // Define types for actions and state
 interface UserData {
@@ -64,7 +65,7 @@ export const loginUserAction = createAsyncThunk<
   }
 
   try {
-    const { data } = await axios.post<UserResponse>(
+    const { data } = await axiosInstance.post<UserResponse>(
       `${baseUrl}/api/users/login`,
       userData,
       config,
@@ -103,7 +104,9 @@ export const fetchUserDetailsAction = createAsyncThunk<
   { rejectValue: { message: string } } // rejected response type
 >("user/detail", async (id, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get<UserResponse>(`${baseUrl}/api/users/${id}`)
+    const { data } = await axiosInstance.get<UserResponse>(
+      `${baseUrl}/api/users/${id}`,
+    )
     return data
   } catch (error: any) {
     if (!error?.response) throw error
@@ -118,7 +121,7 @@ export const fetchUsersAction = createAsyncThunk<
   { rejectValue: { message: string } } // rejected response type
 >("user/list", async (_, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get<User[]>(`${baseUrl}/api/users`)
+    const { data } = await axiosInstance.get<User[]>(`${baseUrl}/api/users`)
     return data
   } catch (error: any) {
     if (!error?.response) throw error
@@ -153,7 +156,7 @@ export const updateProfileAction = createAsyncThunk<
       },
     }
 
-    const { data } = await axios.put<UserResponse>(
+    const { data } = await axiosInstance.put<UserResponse>(
       `${baseUrl}/api/users/${user.id}`,
       formData,
       config,
@@ -176,7 +179,7 @@ export const updateProfileBioAction = createAsyncThunk<
   try {
     console.log(user)
 
-    const { data } = await axios.put<UserResponse>(
+    const { data } = await axiosInstance.put<UserResponse>(
       `${baseUrl}/api/users/bio/${user.id}`,
       user,
     )
@@ -217,6 +220,7 @@ const userSlices = createSlice({
       state.appErr = undefined
       state.serverErr = undefined
     })
+
     builder.addCase(
       loginUserAction.fulfilled,
       (state, action: PayloadAction<UserResponse>) => {

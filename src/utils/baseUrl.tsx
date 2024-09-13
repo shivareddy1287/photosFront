@@ -1,3 +1,4 @@
-const baseUrl = "http://localhost:5000"
+const baseUrl =
+  "https://photostore-ddauerethphxcraw.southindia-01.azurewebsites.net/"
 
 export default baseUrl

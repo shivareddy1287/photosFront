@@ -15,6 +15,7 @@ import {
   fetchPhotosAction,
 } from "../../../redux/slices/photos/photosSlice"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const DeletePhotos = () => {
   const [date, setDate] = useState<Dayjs | null>(dayjs())
@@ -91,13 +92,17 @@ const DeletePhotos = () => {
     if (selectedImageIds.length > 0) {
       dispatch(deletePhotosAction(selectedImageIds))
     } else {
-      alert("Please select images")
+      // alert("Please select images")
+      toast.warning("Please select images")
     }
   }
 
   if (isDeleted) {
     // <Redirect to="/posts" />
     // console.log("update")
+    toast.success("Photos Deleted", {
+      autoClose: 3000, // Optional: Set the duration for how long the toast should be visible
+    })
     navigate("/dashboard")
   }
 

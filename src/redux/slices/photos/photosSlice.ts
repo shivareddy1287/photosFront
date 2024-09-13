@@ -1,9 +1,10 @@
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 import type { PayloadAction } from "@reduxjs/toolkit"
-import axios from "axios"
+// import axiosInstance from "axiosInstance"
 import baseUrl from "../../../utils/baseUrl"
 import type { RootState } from "../../store/store"
+import axiosInstance from "../../../utils/axiosInstance"
 
 // Define Photo type (adjust based on actual API response)
 interface Photo {
@@ -53,7 +54,7 @@ export const uploadPhotosAction = createAsyncThunk<
       },
     }
 
-    const { data } = await axios.post(
+    const { data } = await axiosInstance.post(
       `${baseUrl}/api/photos/upload`,
       formData,
       config,
@@ -75,7 +76,7 @@ export const fetchPhotosAction = createAsyncThunk<
   { rejectValue: { message: string } } // Rejected response type
 >("photos/list", async (_, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get(`${baseUrl}/api/photos`)
+    const { data } = await axiosInstance.get(`${baseUrl}/api/photos`)
     return data
   } catch (error: any) {
     if (!error?.response) throw error
@@ -106,7 +107,7 @@ export const deletePhotosAction = createAsyncThunk<
     }
 
     try {
-      const { data } = await axios.delete(
+      const { data } = await axiosInstance.delete(
         `${baseUrl}/api/photos?ids=${photoIds.join(",")}`,
         config,
       )
