@@ -33,6 +33,8 @@ const Dashboard = () => {
 
   //fetch post
   useEffect(() => {
+    console.log("triggered")
+
     dispatch(fetchPhotosAction())
   }, [dispatch])
 

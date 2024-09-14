@@ -187,7 +187,7 @@ const photosSlices = createSlice({
       .addCase(
         deletePhotosAction.fulfilled,
         (state, action: PayloadAction<DeletePhotosResponse>) => {
-          state.deletedPhotos = action.payload
+          state.deletedPhotos = action?.payload
           state.isDeleted = false
           state.loading = false
           state.appErr = undefined

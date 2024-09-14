@@ -27,6 +27,7 @@
 
 .sl-cont {
   overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .custum-up-file-upload {

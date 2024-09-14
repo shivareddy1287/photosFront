@@ -30,11 +30,6 @@ const DeletePhotos = () => {
     (state: RootState) => state.photos,
   )
 
-  // Fetch photos on component mount
-  useEffect(() => {
-    dispatch(fetchPhotosAction())
-  }, [dispatch])
-
   // Handle individual checkbox selection
   const handleCheckboxChange = (photoId: string) => {
     if (selectedImageIds.includes(photoId)) {
@@ -97,14 +92,23 @@ const DeletePhotos = () => {
     }
   }
 
-  if (isDeleted) {
-    // <Redirect to="/posts" />
-    // console.log("update")
-    toast.success("Photos Deleted", {
-      autoClose: 3000, // Optional: Set the duration for how long the toast should be visible
-    })
-    navigate("/dashboard")
-  }
+  useEffect(() => {
+    if (isDeleted) {
+      // <Redirect to="/posts" />
+      console.log(isDeleted)
+
+      // console.log("update")
+      toast.success("Photos Deleted", {
+        autoClose: 3000, // Optional: Set the duration for how long the toast should be visible
+      })
+      navigate("/dashboard")
+    }
+  }, [isDeleted, navigate])
+
+  // Fetch photos on component mount
+  useEffect(() => {
+    dispatch(fetchPhotosAction())
+  }, [dispatch])
 
   return (
     <div className="ad-cont">

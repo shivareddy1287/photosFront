@@ -17,6 +17,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks"
 import { useNavigate, useParams } from "react-router-dom"
 import type { RootState } from "../../../redux/store/store"
 import CircleLoader from "../../../utils/Loaders/circleLoader"
+import { toast } from "react-toastify"
 
 //Form Schema
 const formSchema = Yup.object({
@@ -75,9 +76,12 @@ const AddUserBio = () => {
     }
   }, [id, dispatch])
 
-  if (isUpdatedBio) {
-    navigate("/know-your-leader")
-  }
+  useEffect(() => {
+    if (isUpdatedBio) {
+      toast.success("Bio updated successfully")
+      navigate("/know-your-leader")
+    }
+  }, [isUpdatedBio, navigate])
 
   return (
     <div className="ad-cont">

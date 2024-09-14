@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks"
 import { useNavigate, useParams } from "react-router-dom"
 import type { RootState } from "../../../redux/store/store"
 import CircleLoader from "../../../utils/Loaders/circleLoader"
+import { toast } from "react-toastify"
 
 //Form Schema
 const formSchema = Yup.object({
@@ -73,9 +74,12 @@ const CreateLeaders = () => {
     }
   }
 
-  if (isUpdated) {
-    navigate("/dashboard")
-  }
+  useEffect(() => {
+    if (isUpdated) {
+      toast.success("Profile updated successfully")
+      navigate("/know-your-leader")
+    }
+  }, [isUpdated, navigate])
 
   return (
     <div className="ad-cont">

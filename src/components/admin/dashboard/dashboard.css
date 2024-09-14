@@ -76,6 +76,7 @@
   /* background-color: #da3925; */
   max-height: calc(100vh - 210px);
   overflow-y: scroll;
+  overflow-y: auto;
 }
 .db-imgs-cont img {
   border-radius: 10px;
