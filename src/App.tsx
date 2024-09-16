@@ -16,6 +16,7 @@ import PhotosGallery from "./components/photosGallary/photosGallery"
 import DeletePhotos from "./components/admin/dashboardDeletePhotos/dashboardDeletePhotos"
 import AddUserBio from "./components/admin/addBio/addbio"
 import KnowYourLeader from "./components/admin/knowYourLeader/knowYourLeader"
+import Error404 from "./components/404Error/404Error"
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route element={<PhotosGallery />} path="/photos-gallery" />
         <Route element={<DeletePhotos />} path="/delete-photos" />
         <Route element={<EditProfile />} path="/edit-profile/:id" />
+        <Route element={<Error404 />} path="/*" />
       </Routes>
     </div>
   )

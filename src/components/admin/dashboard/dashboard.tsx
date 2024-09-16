@@ -31,6 +31,21 @@ const Dashboard = () => {
     (state: RootState) => state.photos,
   )
 
+  const handleClickLeftDateBtn = () => {
+    if (date) {
+      const prevDate = date.subtract(1, "day")
+      // alert(prevDate)
+      setDate(prevDate)
+    }
+  }
+  const handleClickRightDateBtn = () => {
+    if (date) {
+      const prevDate = date.add(1, "day")
+      // alert(prevDate)
+      setDate(prevDate)
+    }
+  }
+
   //fetch post
   useEffect(() => {
     console.log("triggered")
@@ -82,7 +97,11 @@ const Dashboard = () => {
                     </button>
                   </div>
 
-                  <button type="button" className="pn-btn">
+                  <button
+                    type="button"
+                    onClick={handleClickLeftDateBtn}
+                    className="pn-btn"
+                  >
                     <ArrowBackIosNewRoundedIcon />
                   </button>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -94,7 +113,11 @@ const Dashboard = () => {
                       maxDate={maxDate}
                     />
                   </LocalizationProvider>
-                  <button type="button" className="pn-btn">
+                  <button
+                    type="button"
+                    onClick={handleClickRightDateBtn}
+                    className="pn-btn"
+                  >
                     <ArrowForwardIosRoundedIcon className="pn-btn-icon" />
                   </button>
                 </div>
@@ -128,7 +151,11 @@ const Dashboard = () => {
                         })
                         ?.map(photo => (
                           <div key={photo?._id}>
-                            <img src={photo?.image} alt="img" />
+                            <img
+                              className="db-ind-imgs"
+                              src={photo?.image}
+                              alt="img"
+                            />
                           </div>
                         ))
                     ) : (

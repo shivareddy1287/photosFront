@@ -7,6 +7,11 @@
   width: 100%;
 }
 
+.db-ind-imgs {
+  background-color: aliceblue;
+  padding: 10px;
+}
+
 .db-det-cont {
   display: flex;
   justify-content: space-between;

@@ -34,6 +34,16 @@ interface User {
   firstName: string
   lastName: string
   profilePhoto: string
+  designation: string
+  workPlace: string
+  fatherName: string
+  spouseName: string
+  profession: string
+  positionHeld: string
+  specialIntrests: string
+  phoneNo: string
+  premanentAddress: string
+  communicationAddress: string
 }
 
 interface UserState {

@@ -30,12 +30,47 @@ const DeletePhotos = () => {
     (state: RootState) => state.photos,
   )
 
+  const handleClickLeftDateBtn = () => {
+    if (date) {
+      const prevDate = date.subtract(1, "day")
+      // alert(prevDate)
+      setDate(prevDate)
+    }
+  }
+  const handleClickRightDateBtn = () => {
+    if (date) {
+      const prevDate = date.add(1, "day")
+      // alert(prevDate)
+      setDate(prevDate)
+    }
+  }
+
   // Handle individual checkbox selection
   const handleCheckboxChange = (photoId: string) => {
+    let updatingImgsLength = selectedImageIds?.length
+
     if (selectedImageIds.includes(photoId)) {
+      updatingImgsLength -= 1
+
       setSelectedImageIds(selectedImageIds.filter(id => id !== photoId)) // Deselect
     } else {
+      updatingImgsLength += 1
+
       setSelectedImageIds([...selectedImageIds, photoId]) // Select
+    }
+
+    const currentDateImagesLength = allPhotos?.filter(photo => {
+      // Convert the photo date and the given date to just the date part
+      const photoDate = new Date(photo?.date).toISOString().split("T")[0]
+      const selectedDate = date ? date.toDate().toISOString().split("T")[0] : ""
+
+      return photoDate === selectedDate
+    }).length
+    // toast(updatingImgsLength)
+    if (currentDateImagesLength === updatingImgsLength) {
+      setSelectAll(true)
+    } else {
+      setSelectAll(false)
     }
   }
 
@@ -149,7 +184,11 @@ const DeletePhotos = () => {
                 />
                 <label htmlFor="selectCheckbox">Select All Images</label>
               </div>
-              <button type="button" className="pn-btn">
+              <button
+                type="button"
+                onClick={handleClickLeftDateBtn}
+                className="pn-btn"
+              >
                 <ArrowBackIosNewRoundedIcon />
               </button>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -161,7 +200,11 @@ const DeletePhotos = () => {
                   maxDate={maxDate}
                 />
               </LocalizationProvider>
-              <button type="button" className="pn-btn">
+              <button
+                type="button"
+                onClick={handleClickRightDateBtn}
+                className="pn-btn"
+              >
                 <ArrowForwardIosRoundedIcon className="pn-btn-icon" />
               </button>
             </div>
