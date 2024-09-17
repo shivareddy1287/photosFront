@@ -48,3 +48,47 @@ const Root = () => (
 )
 
 export default Root
+
+// const handleProfileImgChange = async (
+//   e: React.ChangeEvent<HTMLInputElement>,
+// ) => {
+//   if (e.target.files) {
+//     const files = Array.from(e.target.files)
+
+//     formik.setFieldValue("image", files)
+
+//     setLoadingImages(true) // Start loading images
+//     const urls = await files.map(file => URL.createObjectURL(file))
+
+//     // Simulate a small delay to let images load
+//     setTimeout(() => {
+//       setLeaderImgs(prev => [...prev, ...urls])
+//       setLoadingImages(false) // Images loaded, stop loading
+//     }, 4000)
+//   }
+// }
+
+// ss
+// const handleProfileImgChange = async (
+//   e: React.ChangeEvent<HTMLInputElement>,
+// ) => {
+//   if (e.target.files) {
+//     const files = Array.from(e.target.files)
+
+//     formik.setFieldValue("image", files)
+
+//     setLoadingImages(true) // Start loading images
+
+//     const urls = await Promise.all(
+//       files.map(file => URL.createObjectURL(file)),
+//     )
+
+//     // Add the new images
+//     setLeaderImgs(prev => [...prev, ...urls])
+//     setTimeout(() => {
+//       // setLeaderImgs(prev => [...prev, ...urls])
+//       setLoadingImages(false) // Images loaded, stop loading
+//     }, 1000)
+//     // setLoadingImages(false) // Images loaded, stop loading
+//   }
+// }

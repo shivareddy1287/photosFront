@@ -1,8 +1,10 @@
 .homePage-bg {
   /* background-image: url("https://thefederal.com/file/2019/03/rooted2.jpg"); */
-  background-image: url("../../Assets/bg.jpeg");
+  /* background-image: url("../../Assets/bg.jpeg"); */
+  background-image: url("../../Assets/bg1.jpg");
   background-size: cover;
   height: calc(100vh - 60px);
+  background-position: center center;
 }
 
 .homePage-card-cont {
@@ -20,7 +22,9 @@
   justify-content: space-between;
 
   background-color: #fff;
-  opacity: 0.8;
+  /* background-position: left center; */
+  background-position-x: center;
+  /* opacity: 0.8; */
   min-height: 80%;
   width: 300px;
   border-radius: 8px;

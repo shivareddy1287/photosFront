@@ -17,6 +17,18 @@
   gap: 20px;
   flex-wrap: wrap;
 }
+.loading-indicator {
+  position: fixed;
+  background-color: #fff;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.4;
+}
 
 .leader-imgs-cont img {
   height: 100px;

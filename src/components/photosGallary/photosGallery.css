@@ -4,6 +4,7 @@
   display: flex;
   /* gap: 10px; */
   border: 2px solid #da3925;
+  /* margin-left: 50px; */
 }
 
 .pg-pt-cont span {
@@ -14,11 +15,15 @@
 
 .pg-pt-cont-selected {
   background-color: #da3925;
-  color: #fff;
+  color: #fff !important;
+}
+
+.db-det-m-cont {
+  display: flex;
+  gap: 10px;
 }
 
 .select-btn {
-  background-color: green;
   height: 38px;
   border-radius: 4px;
   padding: 0 20px;
@@ -26,6 +31,22 @@
   border: none;
   outline: none;
   margin-bottom: 2px;
+  background-color: #adacac;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.selected-btn {
+  background-color: green;
+  cursor: pointer;
+  height: 38px;
+  border-radius: 4px;
+  padding: 0 20px;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-bottom: 2px;
+  font-weight: bold;
 }
 
 /* download btn */

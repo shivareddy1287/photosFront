@@ -37,6 +37,7 @@ const PhotosGallery = () => {
   const handleClickLeftDateBtn = () => {
     if (date) {
       const prevDate = date.subtract(1, "day")
+      setSelectAll(false)
       // alert(prevDate)
       setDate(prevDate)
     }
@@ -44,6 +45,8 @@ const PhotosGallery = () => {
   const handleClickRightDateBtn = () => {
     if (date) {
       const prevDate = date.add(1, "day")
+      setSelectAll(false)
+
       // alert(prevDate)
       setDate(prevDate)
     }
@@ -245,28 +248,71 @@ const PhotosGallery = () => {
                     )}
                   </span>
                 </div>
+                <div className="db-det-m-cont">
+                  <button
+                    onClick={() => setSelectedTab("knowYourLeader")}
+                    className={
+                      selectedTab === "knowYourLeader"
+                        ? "selected-btn"
+                        : "select-btn"
+                    }
+                  >
+                    {" "}
+                    Know Your Leader
+                  </button>
+                  <button
+                    onClick={() => setSelectedTab("photos")}
+                    className={
+                      selectedTab === "photos" ? "selected-btn" : "select-btn"
+                    }
+                  >
+                    {" "}
+                    Photos
+                  </button>
+                  {/* <div className="pg-pt-cont">
+                    <span
+                      onClick={() => setSelectedTab("knowYourLeader")}
+                      className={
+                        selectedTab === "knowYourLeader"
+                          ? "pg-pt-cont-selected"
+                          : ""
+                      }
+                    >
+                      Know Your Leader
+                    </span>
+                    <span
+                      onClick={() => setSelectedTab("photos")}
+                      className={
+                        selectedTab === "photos" ? "pg-pt-cont-selected" : ""
+                      }
+                    >
+                      Photos
+                    </span>
+                  </div> */}
+                  <div className="checkbox-cont">
+                    <input
+                      type="checkbox"
+                      className="input-checkbox"
+                      id="selectCheckbox"
+                      checked={selectAll}
+                      onChange={handleSelectAllChange}
+                    />
+                    <label htmlFor="selectCheckbox">Select All Images</label>
+                  </div>
+                </div>
                 <div className="db-det-r-cont">
                   {/* <span>Select All Photos</span> */}
-                  {selectItems && selectedTab === "photos" && (
-                    <div className="checkbox-cont">
-                      <input
-                        type="checkbox"
-                        className="input-checkbox"
-                        id="selectCheckbox"
-                        checked={selectAll}
-                        onChange={handleSelectAllChange}
-                      />
-                      <label htmlFor="selectCheckbox">Select All Images</label>
-                    </div>
-                  )}
-                  {selectedTab === "photos" && (
+                  {/* {selectItems && selectedTab === "photos" && ( */}
+
+                  {/* // )} */}
+                  {/* {selectedTab === "photos" && (
                     <button
                       className="select-btn"
                       onClick={handleClickSelectBtn}
                     >
                       Select
                     </button>
-                  )}
+                  )} */}
 
                   {/* <button onClick={handleClickDownloadImage}>Download</button> */}
                   {selectedImageIds.length > 0 && (
@@ -289,26 +335,6 @@ const PhotosGallery = () => {
                     </button>
                   )}
 
-                  <div className="pg-pt-cont">
-                    <span
-                      onClick={() => setSelectedTab("photos")}
-                      className={
-                        selectedTab === "photos" ? "pg-pt-cont-selected" : ""
-                      }
-                    >
-                      Photos
-                    </span>
-                    <span
-                      onClick={() => setSelectedTab("knowYourLeader")}
-                      className={
-                        selectedTab === "knowYourLeader"
-                          ? "pg-pt-cont-selected"
-                          : ""
-                      }
-                    >
-                      Know Your Leader
-                    </span>
-                  </div>
                   <button
                     type="button"
                     onClick={handleClickLeftDateBtn}
@@ -322,7 +348,10 @@ const PhotosGallery = () => {
                       value={date}
                       format="DD-MMM-YYYY"
                       className="mui-date custom-datepicker" // Add custom class here
-                      onChange={date => setDate(date)}
+                      onChange={date => {
+                        setDate(date)
+                        setSelectAll(false)
+                      }}
                       maxDate={maxDate}
                       disabled={selectedTab !== "photos"}
                     />
@@ -370,18 +399,18 @@ const PhotosGallery = () => {
                               >
                                 <img src={photo?.image} alt="img" />
                                 <br />
-                                {selectItems && (
-                                  <input
-                                    type="checkbox"
-                                    className="input-checkbox"
-                                    checked={selectedImageIds.includes(
-                                      photo.image,
-                                    )}
-                                    onChange={() =>
-                                      handleCheckboxChange(photo.image)
-                                    }
-                                  />
-                                )}
+                                {/* {selectItems && ( */}
+                                <input
+                                  type="checkbox"
+                                  className="input-checkbox"
+                                  checked={selectedImageIds.includes(
+                                    photo.image,
+                                  )}
+                                  onChange={() =>
+                                    handleCheckboxChange(photo.image)
+                                  }
+                                />
+                                {/* )} */}
                               </div>
                             ))
                         ) : (
