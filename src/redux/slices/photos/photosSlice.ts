@@ -24,6 +24,7 @@ interface PhotosResponse {
 
 interface DeletePhotosResponse {
   message: string
+  deletedCount: number
 }
 
 // Redux slice state interface

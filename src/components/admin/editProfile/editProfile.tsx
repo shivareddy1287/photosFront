@@ -94,7 +94,7 @@ const CreateLeaders = () => {
           ) : (
             <>
               <div className="flex-column">
-                <label>First Name {userDetails?.email}</label>
+                <label>First Name </label>
               </div>
               <div className="inputForm">
                 <AccountBoxIcon />

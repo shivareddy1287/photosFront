@@ -26,7 +26,7 @@ const DeletePhotos = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { allPhotos, isDeleted } = useAppSelector(
+  const { allPhotos, isDeleted, deletedPhotos } = useAppSelector(
     (state: RootState) => state.photos,
   )
 
@@ -130,15 +130,15 @@ const DeletePhotos = () => {
   useEffect(() => {
     if (isDeleted) {
       // <Redirect to="/posts" />
-      console.log(isDeleted)
+      console.log(deletedPhotos)
 
       // console.log("update")
-      toast.success("Photos Deleted", {
+      toast.success(`Photos Deleted`, {
         autoClose: 3000, // Optional: Set the duration for how long the toast should be visible
       })
       navigate("/dashboard")
     }
-  }, [isDeleted, navigate])
+  }, [isDeleted, navigate, deletedPhotos])
 
   // Fetch photos on component mount
   useEffect(() => {
@@ -223,7 +223,10 @@ const DeletePhotos = () => {
                     return photoDate === selectedDate
                   })
                   ?.map(photo => (
-                    <div key={photo?._id} className="delete-img-container">
+                    <div
+                      key={photo?._id}
+                      className="delete-img-container selected-img-box"
+                    >
                       <img src={photo?.image} alt="img" />
                       <br />
                       <input

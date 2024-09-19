@@ -7,6 +7,11 @@
   /* margin-left: 50px; */
 }
 
+.selected-photo-cont {
+  border: 1px solid #adacac !important;
+  border-radius: 10px;
+}
+
 .pg-pt-cont span {
   padding: 6px;
   cursor: pointer;

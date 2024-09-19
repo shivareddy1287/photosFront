@@ -289,16 +289,18 @@ const PhotosGallery = () => {
                       Photos
                     </span>
                   </div> */}
-                  <div className="checkbox-cont">
-                    <input
-                      type="checkbox"
-                      className="input-checkbox"
-                      id="selectCheckbox"
-                      checked={selectAll}
-                      onChange={handleSelectAllChange}
-                    />
-                    <label htmlFor="selectCheckbox">Select All Images</label>
-                  </div>
+                  {selectedTab === "photos" && (
+                    <div className="checkbox-cont">
+                      <input
+                        type="checkbox"
+                        className="input-checkbox"
+                        id="selectCheckbox"
+                        checked={selectAll}
+                        onChange={handleSelectAllChange}
+                      />
+                      <label htmlFor="selectCheckbox">Select All Images</label>
+                    </div>
+                  )}
                 </div>
                 <div className="db-det-r-cont">
                   {/* <span>Select All Photos</span> */}
@@ -315,7 +317,7 @@ const PhotosGallery = () => {
                   )} */}
 
                   {/* <button onClick={handleClickDownloadImage}>Download</button> */}
-                  {selectedImageIds.length > 0 && (
+                  {selectedImageIds.length > 0 && selectedTab === "photos" && (
                     <button
                       className="Download-button"
                       onClick={handleClickDownloadImage}
@@ -395,22 +397,29 @@ const PhotosGallery = () => {
                             ?.map(photo => (
                               <div
                                 key={photo?._id}
-                                className="delete-img-container"
+                                // className="delete-img-container"
+                                className={
+                                  selectedImageIds.includes(photo.image)
+                                    ? "delete-img-container selected-photo-cont"
+                                    : "delete-img-container"
+                                }
+                                onClick={() =>
+                                  handleCheckboxChange(photo.image)
+                                }
                               >
                                 <img src={photo?.image} alt="img" />
                                 <br />
-                                {/* {selectItems && ( */}
                                 <input
                                   type="checkbox"
                                   className="input-checkbox"
                                   checked={selectedImageIds.includes(
                                     photo.image,
                                   )}
-                                  onChange={() =>
+                                  onChange={e => {
+                                    e.stopPropagation()
                                     handleCheckboxChange(photo.image)
-                                  }
+                                  }}
                                 />
-                                {/* )} */}
                               </div>
                             ))
                         ) : (
